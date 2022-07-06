@@ -1,0 +1,10 @@
+<form method="post" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+<input type="submit" value="Войти">
+<p>
+<a href="{% url 'users:signup' %}" class="btn btn-link">
+    Регистрация
+</a>
+</p>
+</form>

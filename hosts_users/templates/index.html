@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+  </head>
+  <body>
+    <p>
+    <a href="{% url 'users:logout' %}" class="btn btn-link">
+      Выйти
+    </a>
+    <hr>
+    </p>
+    Хосты
+    {% for host in hosts %}
+    <p>
+    Владелец: {{ host.owner }}
+    </p>
+    <p>
+    ip адрес: {{ host.ip }} {{ host.port}}
+    </p>
+    <p>
+    ресурс: {{ host.resource}}
+    </p>
+    Дата редактирования: {{ host.date|date:'Y-d-m H:%m:%s' }}
+    </p>
+  {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %} 
+  </body>
+</html>
