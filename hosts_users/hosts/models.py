@@ -1,8 +1,8 @@
-from ipaddress import ip_address
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
 
 User = get_user_model()
+
 
 class Hosts(models.Model):
     RESOURCE_CHOICE = [
@@ -16,6 +16,9 @@ class Hosts(models.Model):
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='hosts'
+        related_name='hosts',
     )
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-date',)

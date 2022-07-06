@@ -3,8 +3,7 @@
     {{ form.as_p }}
 <input type="submit" value="Войти">
 <p>
-<a href="{% url 'users:signup' %}" class="btn btn-link">
-    Регистрация
-</a>
-</p>
+</form>
+<form method="get" action="{% url 'users:signup' %}">
+<input type="submit" value="Регистрация">
 </form>

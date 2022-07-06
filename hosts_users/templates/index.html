@@ -7,9 +7,14 @@
     <a href="{% url 'users:logout' %}" class="btn btn-link">
       Выйти
     </a>
+    <p>
+    <a href="{% url 'hosts:hosts_create' %}" class="btn btn-link">
+      Создать хост
+    </a>
+    </p>
     <hr>
     </p>
-    Хосты
+    Хосты:
     {% for host in hosts %}
     <p>
     Владелец: {{ host.owner }}
@@ -20,8 +25,13 @@
     <p>
     ресурс: {{ host.resource}}
     </p>
-    Дата редактирования: {{ host.date|date:'Y-d-m H:%m:%s' }}
+    Дата редактирования: {{ host.date|date:'Y-d-m H:i:s' }}
     </p>
+    {% if user.is_authenticated %}
+    <a class="btn btn-primary" href="{% url 'hosts:hosts_edit' host.pk %}">
+      редактировать хост
+    </a>
+  {% endif %}
   {% if not forloop.last %}<hr>{% endif %}
   {% endfor %} 
   </body>
