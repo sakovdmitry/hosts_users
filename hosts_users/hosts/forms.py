@@ -6,4 +6,4 @@ from .models import Hosts
 class HostsForm(forms.ModelForm):
     class Meta:
         model = Hosts
-        fields = ('ip', 'port', 'resource',)
+        fields = ('ip', 'port', 'resource', 'owner')

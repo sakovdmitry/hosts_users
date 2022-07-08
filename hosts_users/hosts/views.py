@@ -24,7 +24,8 @@ def hosts_create(request):
     form = HostsForm(request.POST or None)
     if form.is_valid():
         hosts = form.save(commit=False)
-        hosts.owner = request.user
+        if request.user.is_staff is not True:
+            hosts.owner = request.user
         hosts = form.save()
         return redirect('hosts:index')
     return render(request, 'hosts_create.html', {'form': form})
@@ -41,6 +42,8 @@ def hosts_edit(request, hosts_id):
         instance=hosts
     )
     if form.is_valid():
+        if request.user.is_staff is not True:
+            hosts.owner = request.user
         form.save()
         return redirect('hosts:index')
     context = {
